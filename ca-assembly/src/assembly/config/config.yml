@@ -1,0 +1,48 @@
+# Database configuration
+Database:
+  DataSource:
+    driverClass: com.mysql.jdbc.Driver
+    url: ${db.connection.url}?verifyServerCertificate=false&useSSL=true
+    user: ${db.username}
+    password: ${db.username}
+    properties:
+      charSet: UTF-8
+      hibernate.dialect: org.hibernate.dialect.MySQLDialect
+      hibernate.generate_statistics: ${db.generate.statistics}
+      hibernate.show_sql: ${db.show.sql}
+      hibernate.format_sql: ${db.format.sql}
+      hibernate.use_sql_comments: ${db.show.sql.comments}  
+    maxWaitForConnection: 1s
+    validationQuery: "SELECT 1"
+    minSize: 2
+    maxSize: 10
+    checkConnectionWhileIdle: true
+
+# Server configuration
+server:
+  type: simple
+  connector:
+    type: http
+    port: ${service.app.port}
+  requestLog:
+    appenders:
+      - type: file
+        threshold: ${logging.request.threshold}
+        currentLogFilename: ${path.base}/logs/requests.log
+        archivedLogFilenamePattern: ${path.base}/logs/requests-%d.log
+        archive: ${logging.request.archive}
+        archivedFileCount: ${logging.request.archive.filecount}
+        timeZone: ${logging.request.timezone}
+
+# Logging configuration
+logging:
+  level: ${logging.level}
+  appenders:
+    - type: file
+      threshold: ${logging.level}
+      currentLogFilename: ${path.base}/logs/service.log
+      archivedLogFilenamePattern: ${path.base}/service-%d.log
+      archive: ${logging.archive}
+      archivedFileCount: ${logging.archive.filecount}
+      timeZone: ${logging.timezone}
+      logFormat: "${logging.pattern}"
