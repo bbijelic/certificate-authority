@@ -1,0 +1,4 @@
+com/github/bbijelic/ca/security/SecurityBundle.class
+com/github/bbijelic/ca/security/TestSecurityResource.class
+com/github/bbijelic/ca/security/ServiceAuthenticator.class
+com/github/bbijelic/ca/security/ServiceAuthorizer.class

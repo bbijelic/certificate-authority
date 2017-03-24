@@ -20,10 +20,12 @@ Database:
 
 # Server configuration
 server:
-  type: simple
-  connector:
-    type: http
+  applicationConnectors:
+  - type: http
     port: ${service.app.port}
+  adminConnectors:
+  - type: http
+    port: ${service.admin.port}
   requestLog:
     appenders:
       - type: file
@@ -37,6 +39,10 @@ server:
 # Logging configuration
 logging:
   level: ${logging.level}
+  loggers:
+    org.hibernate: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type: DEBUG
   appenders:
     - type: file
       threshold: ${logging.level}

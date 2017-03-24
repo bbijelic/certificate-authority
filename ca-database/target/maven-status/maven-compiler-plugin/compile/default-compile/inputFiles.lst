@@ -1,4 +1,6 @@
 /projects/certificate-authority/ca-database/src/main/java/com/github/bbijelic/ca/db/entity/CertificateAuthorityEntity.java
-/projects/certificate-authority/ca-database/src/main/java/com/github/bbijelic/ca/db/config/package-info.java
+/projects/certificate-authority/ca-database/src/main/java/com/github/bbijelic/ca/db/dao/UserDao.java
+/projects/certificate-authority/ca-database/src/main/java/com/github/bbijelic/ca/db/entity/package-info.java
 /projects/certificate-authority/ca-database/src/main/java/com/github/bbijelic/ca/db/package-info.java
-/projects/certificate-authority/ca-database/src/main/java/com/github/bbijelic/ca/db/config/DatabaseConfiguration.java
+/projects/certificate-authority/ca-database/src/main/java/com/github/bbijelic/ca/db/entity/UserEntity.java
+/projects/certificate-authority/ca-database/src/main/java/com/github/bbijelic/ca/db/dao/package-info.java

@@ -30,7 +30,7 @@ fi
 echo -e "Starting service ... ";
 
 # Start Service
-java -noverify -Dservice.config=/projects/certificate-authority/ca-assembly/target/ca-1.0.0-SNAPSHOT/ca-1.0.0-SNAPSHOT/config/config.yml $SERVICE_JAVA_OPTS -cp '/projects/certificate-authority/ca-assembly/target/ca-1.0.0-SNAPSHOT/ca-1.0.0-SNAPSHOT/config:/projects/certificate-authority/ca-assembly/target/ca-1.0.0-SNAPSHOT/ca-1.0.0-SNAPSHOT/lib/*' com.github.bbijelic.ca.core.CertificateAuthorityApplication > $SERVICE_LOG &
+java -noverify -Dservice.config=/projects/certificate-authority/ca-assembly/target/ca-1.0.0-SNAPSHOT/ca-1.0.0-SNAPSHOT/config/config.yml $SERVICE_JAVA_OPTS -cp '/projects/certificate-authority/ca-assembly/target/ca-1.0.0-SNAPSHOT/ca-1.0.0-SNAPSHOT/config:/projects/certificate-authority/ca-assembly/target/ca-1.0.0-SNAPSHOT/ca-1.0.0-SNAPSHOT/lib/*' com.github.bbijelic.ca.service.CertificateAuthorityService > $SERVICE_LOG &
 
 # Store PID file
 echo $! > $SERVICE_PID

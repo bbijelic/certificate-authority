@@ -1,2 +1,3 @@
-com/github/bbijelic/ca/db/config/DatabaseConfiguration.class
+com/github/bbijelic/ca/db/entity/UserEntity.class
+com/github/bbijelic/ca/db/dao/UserDao.class
 com/github/bbijelic/ca/db/entity/CertificateAuthorityEntity.class

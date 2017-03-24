@@ -31,9 +31,10 @@
 				<db.show.sql.comments>true</db.show.sql.comments>
 				
 				<!-- Service properties -->
-				<service.app.port>8080</service.app.port>
+				<service.app.port>8443</service.app.port>
+				<service.admin.port>9443</service.admin.port>
 				<service.timezone>CET</service.timezone>
- 				<service.main.class>com.github.bbijelic.ca.core.CertificateAuthorityApplication</service.main.class>
+ 				<service.main.class>com.github.bbijelic.ca.service.CertificateAuthorityService</service.main.class>
 	
 						
 				<!-- Logging -->
@@ -54,14 +55,16 @@
 	</profiles>
 	
 	<properties>
-        <!-- JDK Version -->
-        <jdk.version>1.8</jdk.version>
-        
         <!-- Encoding -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        
+	
+		<!-- Java -->
+		<java.source.version>1.8</java.source.version>
+		<java.target.version>1.8</java.target.version>
+			        
         <!-- Plugin versions -->
         <version.plugin.maven.assembly>3.0.0</version.plugin.maven.assembly>
+        <version.plugin.maven.compiler> 3.6.1</version.plugin.maven.compiler>
         
         <!-- Library versions -->
         <version.dropwizard>1.1.0</version.dropwizard>
@@ -71,8 +74,24 @@
 	<!-- Project modules -->
 	<modules>
 	   <module>ca-assembly</module>
-	   <module>ca-core</module>
+	   <module>ca-service</module>
 	   <module>ca-database</module>
+	   <module>ca-security</module>
+	   <module>ca-config</module>
 	</modules>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${version.plugin.maven.compiler}</version>
+				<configuration>
+					<source>${java.source.version}</source>
+					<target>${java.target.version}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 	
 </project>

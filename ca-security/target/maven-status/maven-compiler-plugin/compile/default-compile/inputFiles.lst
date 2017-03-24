@@ -1,0 +1,5 @@
+/projects/certificate-authority/ca-security/src/main/java/com/github/bbijelic/ca/security/package-info.java
+/projects/certificate-authority/ca-security/src/main/java/com/github/bbijelic/ca/security/SecurityBundle.java
+/projects/certificate-authority/ca-security/src/main/java/com/github/bbijelic/ca/security/TestSecurityResource.java
+/projects/certificate-authority/ca-security/src/main/java/com/github/bbijelic/ca/security/ServiceAuthorizer.java
+/projects/certificate-authority/ca-security/src/main/java/com/github/bbijelic/ca/security/ServiceAuthenticator.java

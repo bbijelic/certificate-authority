@@ -20,7 +20,19 @@ FLUSH PRIVILEGES;
 -- Use created database
 USE certauthority;
 
+-- Certificate Authority table
 CREATE TABLE CertificateAuthority (
 id              int not null auto_increment,
 PRIMARY KEY (id)
+) ENGINE = InnoDB;
+
+-- Users table
+CREATE TABLE Users (
+id				int not null auto_increment,
+email			varchar(255) not null,
+password		varchar(64) not null,
+role			varchar(20) not null default "USER",
+
+PRIMARY KEY (id),
+CONSTRAINT email_unique UNIQUE (email)
 ) ENGINE = InnoDB;
