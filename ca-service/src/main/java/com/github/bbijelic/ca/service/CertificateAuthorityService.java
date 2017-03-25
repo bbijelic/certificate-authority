@@ -19,6 +19,7 @@ import com.github.bbijelic.ca.config.CertificateAuthorityConfiguration;
 import com.github.bbijelic.ca.db.dao.PrincipalDao;
 import com.github.bbijelic.ca.db.entity.CertificateAuthorityEntity;
 import com.github.bbijelic.ca.db.entity.PrincipalEntity;
+import com.github.bbijelic.ca.db.entity.RoleEntity;
 import com.github.bbijelic.ca.security.ServiceAuthenticator;
 import com.github.bbijelic.ca.security.ServiceAuthorizer;
 
@@ -40,11 +41,22 @@ public class CertificateAuthorityService extends Application<CertificateAuthorit
      * Hibernate bundle initialization
      */
     private final HibernateBundle<CertificateAuthorityConfiguration> hibernateBundle =
-         new HibernateBundle<CertificateAuthorityConfiguration>(CertificateAuthorityEntity.class, PrincipalEntity.class) {
+         new HibernateBundle<CertificateAuthorityConfiguration>(
+                CertificateAuthorityEntity.class, 
+                PrincipalEntity.class, 
+                RoleEntity.class) {
+             
+             /**
+              * Data source factory getter
+              * @param config the service configuration
+              * 
+              * @return the pooled data source factory
+              */
              public PooledDataSourceFactory getDataSourceFactory(CertificateAuthorityConfiguration config) {
                  return config.getDatabaseConfiguration()
                               .getDataSourceFactory();
              }
+             
          };
 
     @Override
