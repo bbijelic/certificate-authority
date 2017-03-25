@@ -12,6 +12,9 @@ import org.slf4j.LoggerFactory;
 
 import com.github.bbijelic.ca.db.dao.PrincipalDao;
 import com.github.bbijelic.ca.db.entity.PrincipalEntity;
+import com.github.bbijelic.ca.security.digest.DigestUtils;
+import com.github.bbijelic.ca.security.digest.DigestUtilsException;
+import com.github.bbijelic.ca.security.digest.SupportedDigestAlgorithms;
 
 /**
  * Service authenticator
@@ -50,13 +53,24 @@ public class ServiceAuthenticator implements Authenticator<BasicCredentials, Pri
             // Extract principal entity from optional
             PrincipalEntity principalEntity = principalOptional.get();
             
-            // TODO Hash password
+            // Salted password
+            String saltedPassword = credentials.getPassword() + ":" + principalEntity.getSalt();
             
-            // Compare password
-            if(principalEntity.getPassword().equals(credentials.getPassword())){
-                // User found, return optional
-                return principalOptional;
+            try {
+        
+                // SHA-256 salted password digest
+                String saltedPasswordDigest = DigestUtils.digest(SupportedDigestAlgorithms.SHA256, saltedPassword);
+        
+                // Compare password
+                if(principalEntity.getPassword().equals(saltedPasswordDigest)){
+                    // Principal found, return optional
+                    return principalOptional;
+                }
+                
+            } catch(DigestUtilsException due){
+                throw new AuthenticationException(due.getMessage(), due);
             }
+        
         }
         
         // User not found, return empty optional
