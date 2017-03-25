@@ -16,12 +16,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.github.bbijelic.ca.config.CertificateAuthorityConfiguration;
-import com.github.bbijelic.ca.db.dao.UserDao;
+import com.github.bbijelic.ca.db.dao.PrincipalDao;
 import com.github.bbijelic.ca.db.entity.CertificateAuthorityEntity;
-import com.github.bbijelic.ca.db.entity.UserEntity;
+import com.github.bbijelic.ca.db.entity.PrincipalEntity;
 import com.github.bbijelic.ca.security.ServiceAuthenticator;
 import com.github.bbijelic.ca.security.ServiceAuthorizer;
-import com.github.bbijelic.ca.security.TestSecurityResource;
 
 /**
  * Certificate authority application
@@ -41,7 +40,7 @@ public class CertificateAuthorityService extends Application<CertificateAuthorit
      * Hibernate bundle initialization
      */
     private final HibernateBundle<CertificateAuthorityConfiguration> hibernateBundle =
-         new HibernateBundle<CertificateAuthorityConfiguration>(CertificateAuthorityEntity.class, UserEntity.class) {
+         new HibernateBundle<CertificateAuthorityConfiguration>(CertificateAuthorityEntity.class, PrincipalEntity.class) {
              public PooledDataSourceFactory getDataSourceFactory(CertificateAuthorityConfiguration config) {
                  return config.getDatabaseConfiguration()
                               .getDataSourceFactory();
@@ -67,15 +66,15 @@ public class CertificateAuthorityService extends Application<CertificateAuthorit
         
         LOGGER.debug("Obtained session factory");
         
-        // Initialize user dao
-        UserDao userDao = new UserDao(sessionFactory);
+        // Initialize principal dao
+        PrincipalDao principalDao = new PrincipalDao(sessionFactory);
         
         LOGGER.debug("Initialized User DAO");
         
         // Initialize service authenticator
         ServiceAuthenticator authenticator = 
             new UnitOfWorkAwareProxyFactory(hibernateBundle)
-                .create(ServiceAuthenticator.class, UserDao.class, userDao);
+                .create(ServiceAuthenticator.class, PrincipalDao.class, principalDao);
         
         LOGGER.debug("Initialized Service Authenticator");
         
@@ -86,10 +85,10 @@ public class CertificateAuthorityService extends Application<CertificateAuthorit
         
         environment.jersey().register(
             new AuthDynamicFeature(
-                new BasicCredentialAuthFilter.Builder<UserEntity>()
+                new BasicCredentialAuthFilter.Builder<PrincipalEntity>()
                     .setAuthenticator(authenticator)
                     .setAuthorizer(authorizer)
-                    .setRealm("CERTIFICATE AUTHORITY API")
+                    .setRealm("CERTIFICATE-AUTHORITY-API")
                     .buildAuthFilter()));
                     
         LOGGER.debug("Initialized Auth Dynamic Feature");
@@ -97,9 +96,8 @@ public class CertificateAuthorityService extends Application<CertificateAuthorit
         // Register roles allowed dynamic feature
         environment.jersey().register(RolesAllowedDynamicFeature.class);
         //If you want to use @Auth to inject a custom Principal type into your resource
-        environment.jersey().register(new AuthValueFactoryProvider.Binder<>(UserEntity.class));
+        environment.jersey().register(new AuthValueFactoryProvider.Binder<>(PrincipalEntity.class));
         
-        environment.jersey().register(new TestSecurityResource());
     }
 
     public static void main(String[] args) throws Exception {

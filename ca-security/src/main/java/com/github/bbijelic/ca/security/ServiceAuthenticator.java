@@ -10,46 +10,56 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.github.bbijelic.ca.db.dao.UserDao;
-import com.github.bbijelic.ca.db.entity.UserEntity;
+import com.github.bbijelic.ca.db.dao.PrincipalDao;
+import com.github.bbijelic.ca.db.entity.PrincipalEntity;
 
 /**
  * Service authenticator
  * 
  * @author Bojan Bijelić
  */
-public class ServiceAuthenticator implements Authenticator<BasicCredentials, UserEntity> {
+public class ServiceAuthenticator implements Authenticator<BasicCredentials, PrincipalEntity> {
         
     private static final Logger LOGGER = LoggerFactory.getLogger(ServiceAuthenticator.class);
     
     /**
      * User DAO
      */
-    private UserDao userDao;
+    private PrincipalDao principalDao;
     
     /**
      * Constructor
      * 
-     * @param userDao the user dao
+     * @param principalDao the user dao
      */
-    public ServiceAuthenticator(UserDao userDao){
-        this.userDao = userDao;
+    public ServiceAuthenticator(PrincipalDao principalDao){
+        this.principalDao = principalDao;
     }
-        
+    
+    /**
+     * Authenticates principal with provided basic credentials
+     */
     @Override
     @UnitOfWork
-    public Optional<UserEntity> authenticate(BasicCredentials credentials) throws AuthenticationException {
-        
+    public Optional<PrincipalEntity> authenticate(BasicCredentials credentials) throws AuthenticationException {
         LOGGER.info("Authenticating user: {}", credentials.getUsername());
+        // Find the principal in database
+        Optional<PrincipalEntity> principalOptional = principalDao.findByEmail(credentials.getUsername());
         
-        Optional<UserEntity> userOptional = userDao.findByEmail(credentials.getUsername());
-        if(userOptional.isPresent()){
-            UserEntity userEntity = userOptional.get();
-            if(userEntity.getPassword().equals(credentials.getPassword())){
-                return userOptional;
+        if(principalOptional.isPresent()){
+            // Extract principal entity from optional
+            PrincipalEntity principalEntity = principalOptional.get();
+            
+            // TODO Hash password
+            
+            // Compare password
+            if(principalEntity.getPassword().equals(credentials.getPassword())){
+                // User found, return optional
+                return principalOptional;
             }
         }
         
+        // User not found, return empty optional
         return Optional.empty();
     }
     
