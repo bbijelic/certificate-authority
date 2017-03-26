@@ -34,6 +34,12 @@
 			<artifactId>ca-security</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>com.github.bbijelic</groupId>
+			<artifactId>ca-api-certificate-profiles</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
     </dependencies>
 	
 </project>

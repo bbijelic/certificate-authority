@@ -15,6 +15,7 @@ import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.github.bbijelic.ca.api.certificate.profiles.CertificateProfilesApiBundle;
 import com.github.bbijelic.ca.config.CertificateAuthorityConfiguration;
 import com.github.bbijelic.ca.db.dao.PrincipalDao;
 import com.github.bbijelic.ca.db.entity.CertificateAuthorityEntity;
@@ -67,6 +68,8 @@ public class CertificateAuthorityService extends Application<CertificateAuthorit
 
         // Add hibernate bundle
         bootstrap.addBundle(hibernateBundle);
+        
+        bootstrap.addBundle(new CertificateProfilesApiBundle());
                     
     }
 

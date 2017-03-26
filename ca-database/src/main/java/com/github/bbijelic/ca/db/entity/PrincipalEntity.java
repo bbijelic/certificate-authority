@@ -7,6 +7,7 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -109,6 +110,7 @@ public class PrincipalEntity implements Principal {
     /**
      * Roles
      */
+    @ElementCollection(targetClass=RoleEntity.class)
     private Set<RoleEntity> roles = new HashSet<RoleEntity>(0);
     
     @ManyToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
