@@ -14,6 +14,7 @@
 	
 	<properties>
 	   <version.swagger.jersey2.jaxrs>1.5.13</version.swagger.jersey2.jaxrs>
+	   <version.jersey.container>2.25.1</version.jersey.container>
 	</properties>
 	
 	<dependencies>
@@ -28,14 +29,20 @@
             <version>${version.dropwizard}</version>
         </dependency>
         <dependency>
+            <groupId>io.dropwizard</groupId>
+            <artifactId>dropwizard-testing</artifactId>
+            <scope>test</scope>
+            <version>${version.dropwizard}</version>
+        </dependency>
+        <dependency>
             <groupId>org.glassfish.jersey.containers</groupId>
             <artifactId>jersey-container-jetty-servlet</artifactId>
-            <version>2.25.1</version>
+            <version>${version.jersey.container}</version>
         </dependency>
         <dependency>
             <groupId>org.glassfish.jersey.containers</groupId>
             <artifactId>jersey-container-servlet-core</artifactId>
-            <version>2.25.1</version>
+            <version>${version.jersey.container}</version>
         </dependency>
     </dependencies>
     
@@ -56,7 +63,8 @@
                             <language>jaxrs</language>
                             <modelPackage>com.github.bbijelic.ca.api.certificate.profiles.model</modelPackage>
                             <apiPackage>com.github.bbijelic.ca.api.certificate.profiles.api</apiPackage>
-                            <invokerPackage>com.github.bbijelic.ca.api.certificate.profiles.api</invokerPackage>
+                            <invokerPackage>com.github.bbijelic.ca.api.certificate.profiles.handler</invokerPackage>
+                            <useJaxbAnnotations>true</useJaxbAnnotations>
                             <configOptions>
                                <sourceFolder>src/main/java</sourceFolder>
                             </configOptions>           

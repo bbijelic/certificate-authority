@@ -15,7 +15,7 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import javax.validation.constraints.*;
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2017-03-26T01:52:53.407Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2017-03-28T21:15:55.422Z")
 public abstract class CertificateProfilesApiService {
     public abstract Response createCertificateProfile(CertificateProfile certificateProfile,SecurityContext securityContext) throws NotFoundException;
     public abstract Response deleteCertificateProfile(Long id,SecurityContext securityContext) throws NotFoundException;

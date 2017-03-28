@@ -23,7 +23,7 @@ import javax.validation.constraints.*;
 /**
  * CertificateProfile
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2017-03-26T01:52:53.407Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2017-03-28T21:15:55.422Z")
 public class CertificateProfile   {
   @JsonProperty("name")
   private String name = null;

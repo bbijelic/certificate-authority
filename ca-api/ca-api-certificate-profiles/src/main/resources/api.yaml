@@ -21,6 +21,13 @@ schemes:
   - "http"
   - "https"
   
+securityDefinitions:
+  UserSecurity:
+    type: basic
+    
+security:
+  - UserSecurity: []
+  
 consumes:
   - "application/json"
   

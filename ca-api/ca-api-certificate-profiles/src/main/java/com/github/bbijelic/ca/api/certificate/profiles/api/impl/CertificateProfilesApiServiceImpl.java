@@ -1,6 +1,5 @@
 package com.github.bbijelic.ca.api.certificate.profiles.api.impl;
 
-import javax.annotation.security.PermitAll;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
@@ -17,10 +16,11 @@ import com.github.bbijelic.ca.api.certificate.profiles.model.CertificateProfile;
  * 
  * @author Bojan Bijelić
  */
+@SuppressWarnings("unused")
 public class CertificateProfilesApiServiceImpl extends CertificateProfilesApiService {
     
     private static final Logger LOGGER = LoggerFactory.getLogger(CertificateProfilesApiServiceImpl.class);
-
+        
     @Override
     public Response createCertificateProfile(CertificateProfile certificateProfile, SecurityContext securityContext) throws NotFoundException {
         // do some magic!

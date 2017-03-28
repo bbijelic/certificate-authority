@@ -27,7 +27,7 @@ import javax.validation.constraints.*;
 @Consumes({ "application/json" })
 @Produces({ "application/json" })
 @io.swagger.annotations.Api(description = "the certificate-profiles API")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2017-03-26T01:52:53.407Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJerseyServerCodegen", date = "2017-03-28T21:15:55.422Z")
 public class CertificateProfilesApi  {
    private final CertificateProfilesApiService delegate = CertificateProfilesApiServiceFactory.getCertificateProfilesApi();
 
@@ -35,7 +35,9 @@ public class CertificateProfilesApi  {
     
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Creates certificate profile", notes = "Creates certificate profile", response = void.class, tags={  })
+    @io.swagger.annotations.ApiOperation(value = "Creates certificate profile", notes = "Creates certificate profile", response = void.class, authorizations = {
+        @io.swagger.annotations.Authorization(value = "UserSecurity")
+    }, tags={  })
     @io.swagger.annotations.ApiResponses(value = { 
         @io.swagger.annotations.ApiResponse(code = 200, message = "Successful response", response = void.class) })
     public Response createCertificateProfile(@ApiParam(value = "Certificate Profile Object" ,required=true) CertificateProfile certificateProfile
@@ -47,7 +49,9 @@ public class CertificateProfilesApi  {
     @Path("/{id}")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Deletes certificate profile", notes = "Deletes certificate profile identified by an ID", response = void.class, tags={  })
+    @io.swagger.annotations.ApiOperation(value = "Deletes certificate profile", notes = "Deletes certificate profile identified by an ID", response = void.class, authorizations = {
+        @io.swagger.annotations.Authorization(value = "UserSecurity")
+    }, tags={  })
     @io.swagger.annotations.ApiResponses(value = { 
         @io.swagger.annotations.ApiResponse(code = 200, message = "Successful response", response = void.class),
         
@@ -61,7 +65,9 @@ public class CertificateProfilesApi  {
     
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Reads all certificate profiles", notes = "Reads all certificate profiles", response = CertificateProfile.class, responseContainer = "List", tags={  })
+    @io.swagger.annotations.ApiOperation(value = "Reads all certificate profiles", notes = "Reads all certificate profiles", response = CertificateProfile.class, responseContainer = "List", authorizations = {
+        @io.swagger.annotations.Authorization(value = "UserSecurity")
+    }, tags={  })
     @io.swagger.annotations.ApiResponses(value = { 
         @io.swagger.annotations.ApiResponse(code = 200, message = "Successful response", response = CertificateProfile.class, responseContainer = "List"),
         
@@ -74,7 +80,9 @@ public class CertificateProfilesApi  {
     @Path("/{id}")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Reads certificate profile", notes = "Returns certificate profile identified by an ID", response = CertificateProfile.class, tags={  })
+    @io.swagger.annotations.ApiOperation(value = "Reads certificate profile", notes = "Returns certificate profile identified by an ID", response = CertificateProfile.class, authorizations = {
+        @io.swagger.annotations.Authorization(value = "UserSecurity")
+    }, tags={  })
     @io.swagger.annotations.ApiResponses(value = { 
         @io.swagger.annotations.ApiResponse(code = 200, message = "Successful response", response = CertificateProfile.class),
         
@@ -88,7 +96,9 @@ public class CertificateProfilesApi  {
     @Path("/{id}")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Updates certificate profile", notes = "Updates certificate profile identified by an ID", response = void.class, tags={  })
+    @io.swagger.annotations.ApiOperation(value = "Updates certificate profile", notes = "Updates certificate profile identified by an ID", response = void.class, authorizations = {
+        @io.swagger.annotations.Authorization(value = "UserSecurity")
+    }, tags={  })
     @io.swagger.annotations.ApiResponses(value = { 
         @io.swagger.annotations.ApiResponse(code = 200, message = "Successful operation", response = void.class),
         

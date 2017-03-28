@@ -69,6 +69,7 @@
         
         <!-- Library versions -->
         <version.dropwizard>1.1.0</version.dropwizard>
+        <version.junit>4.12</version.junit>
         
 	</properties>
 	
@@ -81,6 +82,15 @@
 	   <module>ca-security</module>
 	   <module>ca-config</module>
 	</modules>
+	
+	<dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+            <version>${version.junit}</version>
+        </dependency>
+	</dependencies>
 	
 	<build>
 		<plugins>
