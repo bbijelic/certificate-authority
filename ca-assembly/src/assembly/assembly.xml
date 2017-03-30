@@ -21,7 +21,7 @@
         <!-- Binaries (start/stop scripts) -->
         <fileSet>
             <filtered>true</filtered>
-            <directory>${project.basedir}/src/assembly/bin</directory>
+            <directory>${project.basedir}/src/assembly/scripts</directory>
             <outputDirectory>bin</outputDirectory>
             <fileMode>755</fileMode>
         </fileSet>
