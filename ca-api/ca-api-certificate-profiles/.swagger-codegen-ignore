@@ -1,4 +1,0 @@
-# Swagger Codegen Ignore
-
-# Do not override implementation class
-**/*Impl.java
