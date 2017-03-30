@@ -65,20 +65,33 @@
         <!-- Plugin versions -->
         <version.plugin.maven.assembly>3.0.0</version.plugin.maven.assembly>
         <version.plugin.maven.compiler> 3.6.1</version.plugin.maven.compiler>
+        <version.plugin.swagger.codegen>2.2.2</version.plugin.swagger.codegen>
         
         <!-- Library versions -->
         <version.dropwizard>1.1.0</version.dropwizard>
+        <version.junit>4.12</version.junit>
+        <version.guice.bundle>1.0.6.0</version.guice.bundle>
         
 	</properties>
 	
 	<!-- Project modules -->
 	<modules>
+	   <module>ca-api</module>
 	   <module>ca-assembly</module>
 	   <module>ca-service</module>
 	   <module>ca-database</module>
 	   <module>ca-security</module>
 	   <module>ca-config</module>
 	</modules>
+	
+	<dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+            <version>${version.junit}</version>
+        </dependency>
+	</dependencies>
 	
 	<build>
 		<plugins>

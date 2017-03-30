@@ -11,14 +11,13 @@
 	
 	<name>Certificate Authority : Service</name>
 	<description>Certificate Authority Service Service Module</description>
-	
+		
 	<dependencies>
         <dependency>
             <groupId>io.dropwizard</groupId>
             <artifactId>dropwizard-core</artifactId>
             <version>${version.dropwizard}</version>
-        </dependency>
-        
+        </dependency>        
         <dependency>
 			<groupId>com.github.bbijelic</groupId>
 			<artifactId>ca-config</artifactId>
@@ -34,6 +33,17 @@
 			<artifactId>ca-security</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>com.github.bbijelic</groupId>
+			<artifactId>ca-api-certificate-profiles</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+            <groupId>com.hubspot.dropwizard</groupId>
+            <artifactId>dropwizard-guice</artifactId>
+            <version>${version.guice.bundle}</version>
+        </dependency>
+		
     </dependencies>
 	
 </project>

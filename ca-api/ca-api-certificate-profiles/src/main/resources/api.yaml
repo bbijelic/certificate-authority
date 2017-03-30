@@ -1,0 +1,139 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "1.0.0"
+  title: Certificate Authority Service API
+  description: "API for management of certificate profiles"
+  contact:
+    name: Bojan Bijelić
+    url: "https://github.com/bbijelic/certificate-authority"
+  license: 
+    name: "MIT"
+    url: "https://raw.githubusercontent.com/bbijelic/certificate-authority/master/LICENSE"
+
+basePath: "/api"
+
+schemes:
+  - "http"
+  - "https"
+  
+securityDefinitions:
+  UserSecurity:
+    type: basic
+    
+security:
+  - UserSecurity: []
+  
+consumes:
+  - "application/json"
+  
+produces: 
+    - "application/json"
+  
+# Describe your paths here
+paths:
+
+  "/certificate-profiles":
+    post:
+      description: Creates certificate profile
+      summary: Creates certificate profile
+      operationId: createCertificateProfile
+      parameters:
+        - name: CertificateProfile
+          description: Certificate Profile Object
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/CertificateProfile"
+      responses:
+        200:
+          description: Successful response
+    get:
+      description: Reads all certificate profiles
+      summary: Reads all certificate profiles
+      operationId: readAllCertificateProfiles
+      responses:
+        200:
+          description: Successful response
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/CertificateProfile"
+        404:
+          description: Not found
+          
+  "/certificate-profiles/{id}":
+    get:
+      description: Returns certificate profile identified by an ID
+      summary: Reads certificate profile
+      operationId: readCertificateProfile
+      parameters:
+        - name: id
+          description: ID of the certificate profile
+          in: path
+          required: true
+          type: "integer"
+          format: "int64"
+      responses:
+        200:
+          description: Successful response
+          schema:
+            $ref: "#/definitions/CertificateProfile"
+        404:
+          description: Not found
+    put:
+      description: Updates certificate profile identified by an ID
+      summary: Updates certificate profile
+      operationId: updateCertificateProfile
+      parameters:
+        - name: id
+          description: ID of the certificate profile
+          in: path
+          required: true
+          type: "integer"
+          format: "int64"
+        - name: CertificateProfile
+          description: Certificate Profile Object
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/CertificateProfile"
+      responses:
+        200:
+          description: Successful operation
+        404:
+          description: Not found
+    delete:
+      description: Deletes certificate profile identified by an ID
+      summary: Deletes certificate profile
+      operationId: deleteCertificateProfile
+      parameters:
+        - name: id
+          description: ID of the certificate profile
+          in: path
+          required: true
+          type: "integer"
+          format: "int64"
+      responses:
+        200:
+          description: Successful response
+        404:
+          description: Not found
+          
+# Object definitions
+definitions:
+  # Certificate profile
+  CertificateProfile:
+    required:
+      - "name"
+    properties:
+      "name":
+        type: "string"
+        description: Name of the certificate profile
+      "description":
+        type: "string"
+        description: Description of the certificate profile

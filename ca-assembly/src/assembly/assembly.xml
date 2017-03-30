@@ -33,6 +33,7 @@
 			<outputDirectory>config</outputDirectory>
 			<includes>
 				<include>*.yml</include>
+				<include>*.cfg</include>
 				<include>banner.txt</include>
 			</includes>
 		</fileSet>
